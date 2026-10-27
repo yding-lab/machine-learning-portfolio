@@ -14,8 +14,8 @@ from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import RobustScaler
 
 
-class ClinicalRatioFeatures(BaseEstimator, TransformerMixin):
-    """Create compact domain-inspired ratio features.
+class RatioFeatures(BaseEstimator, TransformerMixin):
+    """Create compact ratio features from pairs of measurements.
 
     The transformation is deterministic and stateless, making it safe for
     training and production inference.
@@ -85,7 +85,7 @@ def build_preprocessor(feature_names: list[str]) -> Pipeline:
 
     return Pipeline(
         steps=[
-            ("ratio_features", ClinicalRatioFeatures()),
+            ("ratio_features", RatioFeatures()),
             ("scale", numeric_transformer),
         ]
     )

@@ -1,0 +1,8 @@
+# Model binaries are rebuilt by `python -m ml_portfolio.train`; reports are committed.
+artifacts/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv*/
+venv/
+.env
