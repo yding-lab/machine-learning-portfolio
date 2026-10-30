@@ -21,4 +21,4 @@ def trained():
     """Train once with the quick grid into the temp dir."""
     from ml_portfolio import train
 
-    return {"metadata": train.train_and_select(train.QUICK_CONFIG), "dir": TMP}
+    return {"metadata": train.train_and_select(train.QUICK_CONFIG, n_bootstrap=200), "dir": TMP}
