@@ -1,0 +1,451 @@
+{
+  "trained_at_utc": "2026-10-30T22:30:18.571411+00:00",
+  "selected_model": "logistic_regression",
+  "selection_rule": "highest mean 5-fold CV roc_auc on the training split",
+  "best_cv_score": 0.9964912280701755,
+  "best_params": {
+    "model__C": 10.0,
+    "model__l1_ratio": 1.0
+  },
+  "feature_names": [
+    "mean radius",
+    "mean texture",
+    "mean perimeter",
+    "mean area",
+    "mean smoothness",
+    "mean compactness",
+    "mean concavity",
+    "mean concave points",
+    "mean symmetry",
+    "mean fractal dimension",
+    "radius error",
+    "texture error",
+    "perimeter error",
+    "area error",
+    "smoothness error",
+    "compactness error",
+    "concavity error",
+    "concave points error",
+    "symmetry error",
+    "fractal dimension error",
+    "worst radius",
+    "worst texture",
+    "worst perimeter",
+    "worst area",
+    "worst smoothness",
+    "worst compactness",
+    "worst concavity",
+    "worst concave points",
+    "worst symmetry",
+    "worst fractal dimension"
+  ],
+  "target_encoding": {
+    "0": "malignant",
+    "1": "benign"
+  },
+  "positive_class": "benign",
+  "data_summary": {
+    "rows": 569,
+    "train_rows": 455,
+    "test_rows": 114,
+    "class_counts": {
+      "malignant": 212,
+      "benign": 357
+    }
+  },
+  "training_config": {
+    "random_state": 42,
+    "test_size": 0.2,
+    "cv_folds": 5,
+    "scoring": "roc_auc",
+    "n_jobs": -1,
+    "logistic_c_values": [
+      0.1,
+      1.0,
+      10.0
+    ],
+    "rf_estimators": [
+      200,
+      400
+    ],
+    "rf_max_depth": [
+      null,
+      8,
+      16
+    ],
+    "decision_threshold": 0.5
+  },
+  "candidate_results": [
+    {
+      "model": "logistic_regression",
+      "best_cv_score": 0.9964912280701755,
+      "best_cv_score_std": 0.004866801288978995,
+      "best_cv_train_score": 0.9989357585139318,
+      "grid_size": 6,
+      "best_params": {
+        "model__C": 10.0,
+        "model__l1_ratio": 1.0
+      }
+    },
+    {
+      "model": "random_forest",
+      "best_cv_score": 0.9917440660474716,
+      "best_cv_score_std": 0.0042799672555887775,
+      "best_cv_train_score": 0.9999871001031991,
+      "grid_size": 36,
+      "best_params": {
+        "model__max_depth": null,
+        "model__max_features": "sqrt",
+        "model__min_samples_leaf": 2,
+        "model__n_estimators": 200
+      }
+    }
+  ],
+  "holdout_results": {
+    "metrics": {
+      "roc_auc": 0.9953703703703703,
+      "average_precision": 0.997111572671604,
+      "accuracy": 0.9385964912280702,
+      "balanced_accuracy": 0.9464285714285714,
+      "precision": 0.9850746268656716,
+      "recall": 0.9166666666666666,
+      "f1": 0.9496402877697842,
+      "brier_score": 0.034031330230843496
+    },
+    "confusion_matrix": [
+      [
+        41,
+        1
+      ],
+      [
+        6,
+        66
+      ]
+    ],
+    "classification_report": {
+      "0": {
+        "precision": 0.8723404255319149,
+        "recall": 0.9761904761904762,
+        "f1-score": 0.9213483146067416,
+        "support": 42.0
+      },
+      "1": {
+        "precision": 0.9850746268656716,
+        "recall": 0.9166666666666666,
+        "f1-score": 0.9496402877697842,
+        "support": 72.0
+      },
+      "accuracy": 0.9385964912280702,
+      "macro avg": {
+        "precision": 0.9287075261987933,
+        "recall": 0.9464285714285714,
+        "f1-score": 0.9354943011882628,
+        "support": 114.0
+      },
+      "weighted avg": {
+        "precision": 0.9435409737427086,
+        "recall": 0.9385964912280702,
+        "f1-score": 0.9392169292360317,
+        "support": 114.0
+      }
+    },
+    "prediction_summary": {
+      "mean_probability": 0.5882567975777127,
+      "min_probability": 1.1164215967470333e-32,
+      "max_probability": 0.999999956399107,
+      "positive_prediction_rate": 0.5877192982456141
+    }
+  },
+  "diagnostics": {
+    "probability_meaning": "P(benign); a case is called malignant when P(benign) < threshold",
+    "oof_training": {
+      "roc_auc": 0.9962848297213622,
+      "brier_score": 0.01776657514580009,
+      "threshold_table": [
+        {
+          "threshold": 0.3,
+          "malignant_caught": 161,
+          "malignant_missed": 9,
+          "benign_flagged": 2,
+          "benign_cleared": 283,
+          "malignant_recall": 0.9470588235294117,
+          "malignant_precision": 0.9877300613496932,
+          "benign_recall": 0.9929824561403509
+        },
+        {
+          "threshold": 0.4,
+          "malignant_caught": 165,
+          "malignant_missed": 5,
+          "benign_flagged": 2,
+          "benign_cleared": 283,
+          "malignant_recall": 0.9705882352941176,
+          "malignant_precision": 0.9880239520958084,
+          "benign_recall": 0.9929824561403509
+        },
+        {
+          "threshold": 0.5,
+          "malignant_caught": 167,
+          "malignant_missed": 3,
+          "benign_flagged": 6,
+          "benign_cleared": 279,
+          "malignant_recall": 0.9823529411764705,
+          "malignant_precision": 0.9653179190751445,
+          "benign_recall": 0.9789473684210527
+        },
+        {
+          "threshold": 0.6,
+          "malignant_caught": 167,
+          "malignant_missed": 3,
+          "benign_flagged": 11,
+          "benign_cleared": 274,
+          "malignant_recall": 0.9823529411764705,
+          "malignant_precision": 0.9382022471910112,
+          "benign_recall": 0.9614035087719298
+        },
+        {
+          "threshold": 0.7,
+          "malignant_caught": 167,
+          "malignant_missed": 3,
+          "benign_flagged": 14,
+          "benign_cleared": 271,
+          "malignant_recall": 0.9823529411764705,
+          "malignant_precision": 0.9226519337016574,
+          "benign_recall": 0.9508771929824561
+        },
+        {
+          "threshold": 0.8,
+          "malignant_caught": 168,
+          "malignant_missed": 2,
+          "benign_flagged": 19,
+          "benign_cleared": 266,
+          "malignant_recall": 0.9882352941176471,
+          "malignant_precision": 0.8983957219251337,
+          "benign_recall": 0.9333333333333333
+        },
+        {
+          "threshold": 0.9,
+          "malignant_caught": 169,
+          "malignant_missed": 1,
+          "benign_flagged": 26,
+          "benign_cleared": 259,
+          "malignant_recall": 0.9941176470588236,
+          "malignant_precision": 0.8666666666666667,
+          "benign_recall": 0.9087719298245615
+        }
+      ],
+      "calibration_bins": [
+        {
+          "mean_predicted": 1.156781373243278e-06,
+          "observed_benign_rate": 0.0,
+          "n": 91
+        },
+        {
+          "mean_predicted": 0.12562756840494985,
+          "observed_benign_rate": 0.16483516483516483,
+          "n": 91
+        },
+        {
+          "mean_predicted": 0.9433902463110783,
+          "observed_benign_rate": 0.978021978021978,
+          "n": 91
+        },
+        {
+          "mean_predicted": 0.9982945137853427,
+          "observed_benign_rate": 0.989010989010989,
+          "n": 91
+        },
+        {
+          "mean_predicted": 0.9999522051907862,
+          "observed_benign_rate": 1.0,
+          "n": 91
+        }
+      ]
+    },
+    "chosen_threshold": {
+      "threshold": 0.490029,
+      "malignant_caught": 167,
+      "malignant_missed": 3,
+      "benign_flagged": 5,
+      "benign_cleared": 280,
+      "malignant_recall": 0.9823529411764705,
+      "malignant_precision": 0.9709302325581395,
+      "benign_recall": 0.9824561403508771,
+      "rule": "lowest threshold with out-of-fold malignant recall >= 0.98 on the training split"
+    },
+    "test_at_default": {
+      "n_test": 114,
+      "n_malignant": 42,
+      "n_benign": 72,
+      "threshold": 0.5,
+      "roc_auc": {
+        "value": 0.9953703703703703,
+        "ci95": [
+          0.9828042328042328,
+          1.0
+        ],
+        "method": "stratified bootstrap"
+      },
+      "average_precision_malignant": {
+        "value": 0.9938054009482582,
+        "ci95": [
+          0.9785628531073446,
+          1.0000000000000002
+        ],
+        "method": "stratified bootstrap"
+      },
+      "brier_score": {
+        "value": 0.034031330230843496,
+        "ci95": [
+          0.014300563896311168,
+          0.06055230352841166
+        ],
+        "method": "stratified bootstrap"
+      },
+      "accuracy": {
+        "value": 0.9385964912280702,
+        "ci95": [
+          0.8859649122807017,
+          0.9736842105263158
+        ],
+        "method": "stratified bootstrap"
+      },
+      "malignant_recall": {
+        "value": 0.9761904761904762,
+        "k": 41,
+        "n": 42,
+        "ci95": [
+          0.8767851883475174,
+          0.9957847045008997
+        ],
+        "method": "Wilson"
+      },
+      "malignant_precision": {
+        "value": 0.8723404255319149,
+        "k": 41,
+        "n": 47,
+        "ci95": [
+          0.7482578662713097,
+          0.9401547721979753
+        ],
+        "method": "Wilson"
+      },
+      "benign_recall": {
+        "value": 0.9166666666666666,
+        "k": 66,
+        "n": 72,
+        "ci95": [
+          0.8298744472876599,
+          0.9612481028695096
+        ],
+        "method": "Wilson"
+      }
+    },
+    "test_at_chosen": {
+      "n_test": 114,
+      "n_malignant": 42,
+      "n_benign": 72,
+      "threshold": 0.490029,
+      "roc_auc": {
+        "value": 0.9953703703703703,
+        "ci95": [
+          0.9828042328042328,
+          1.0
+        ],
+        "method": "stratified bootstrap"
+      },
+      "average_precision_malignant": {
+        "value": 0.9938054009482582,
+        "ci95": [
+          0.9785628531073446,
+          1.0000000000000002
+        ],
+        "method": "stratified bootstrap"
+      },
+      "brier_score": {
+        "value": 0.034031330230843496,
+        "ci95": [
+          0.014300563896311168,
+          0.06055230352841166
+        ],
+        "method": "stratified bootstrap"
+      },
+      "accuracy": {
+        "value": 0.9385964912280702,
+        "ci95": [
+          0.8859649122807017,
+          0.9736842105263158
+        ],
+        "method": "stratified bootstrap"
+      },
+      "malignant_recall": {
+        "value": 0.9761904761904762,
+        "k": 41,
+        "n": 42,
+        "ci95": [
+          0.8767851883475174,
+          0.9957847045008997
+        ],
+        "method": "Wilson"
+      },
+      "malignant_precision": {
+        "value": 0.8723404255319149,
+        "k": 41,
+        "n": 47,
+        "ci95": [
+          0.7482578662713097,
+          0.9401547721979753
+        ],
+        "method": "Wilson"
+      },
+      "benign_recall": {
+        "value": 0.9166666666666666,
+        "k": 66,
+        "n": 72,
+        "ci95": [
+          0.8298744472876599,
+          0.9612481028695096
+        ],
+        "method": "Wilson"
+      }
+    },
+    "test_calibration_bins": [
+      {
+        "mean_predicted": 2.531905864361604e-07,
+        "observed_benign_rate": 0.0,
+        "n": 23
+      },
+      {
+        "mean_predicted": 0.09515960401252924,
+        "observed_benign_rate": 0.21739130434782608,
+        "n": 23
+      },
+      {
+        "mean_predicted": 0.8645929967371836,
+        "observed_benign_rate": 0.9545454545454546,
+        "n": 22
+      },
+      {
+        "mean_predicted": 0.9936465363772231,
+        "observed_benign_rate": 1.0,
+        "n": 23
+      },
+      {
+        "mean_predicted": 0.9998992149258009,
+        "observed_benign_rate": 1.0,
+        "n": 23
+      }
+    ],
+    "bootstrap_replicates": 2000,
+    "figures": {
+      "confusion_matrix": "reports/figures/confusion_matrix.png",
+      "roc_pr_curves": "reports/figures/roc_pr_curves.png",
+      "calibration": "reports/figures/calibration.png",
+      "threshold_tradeoff": "reports/figures/threshold_tradeoff.png"
+    }
+  },
+  "environment": {
+    "python": "3.13.16",
+    "scikit_learn": "1.9.1"
+  },
+  "artifact": "artifacts/best_model.joblib"
+}

@@ -1,0 +1,27 @@
+name: tests
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ["3.11", "3.13"]
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
+        with:
+          python-version: ${{ matrix.python-version }}
+          cache: pip
+      - run: pip install -r requirements-dev.txt
+      - name: Tests (train a quick model in a temp dir, then exercise the API)
+        run: python -m pytest -q -W error::FutureWarning
+      - name: Quick end-to-end training run
+        env:
+          ARTIFACT_DIR: /tmp/artifacts
+          REPORT_DIR: /tmp/reports
+          MODEL_PATH: /tmp/artifacts/best_model.joblib
+        run: python -m ml_portfolio.train --quick
