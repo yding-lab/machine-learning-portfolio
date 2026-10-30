@@ -11,7 +11,7 @@ A small, complete model lifecycle: validate data, compare models with cross-vali
 | | |
 |---|---|
 | Task | Binary classification of 569 cell-nucleus records into malignant or benign |
-| Source | [`sklearn.datasets.load_breast_cancer`](https://scikit-learn.org/stable/modules/generated/sklearn.datasets.load_breast_cancer.html), a copy of the [UCI Breast Cancer Wisconsin (Diagnostic)](https://archive.ics.uci.edu/dataset/17/breast+cancer+wisconsin+diagnostic) dataset (Wolberg, Street and Mangasarian, 1995). It ships with scikit-learn, so no download or credentials are needed. See the UCI page for its license terms |
+| Source | [`sklearn.datasets.load_breast_cancer`](https://scikit-learn.org/stable/modules/generated/sklearn.datasets.load_breast_cancer.html), a copy of the [UCI Breast Cancer Wisconsin (Diagnostic)](https://archive.ics.uci.edu/dataset/17/breast-cancer-wisconsin-diagnostic) dataset (Wolberg, Street and Mangasarian, 1995). It ships with scikit-learn, so no download or credentials are needed. See the UCI page for its license terms |
 | Features | 30 numeric measurements (mean, standard error and worst value of 10 nucleus properties), plus 4 ratio features derived in the pipeline |
 | Target | **0 = malignant (212), 1 = benign (357)**, scikit-learn's encoding. "Positive" in the metrics and in the API therefore means **benign** |
 
