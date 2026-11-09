@@ -1,0 +1,256 @@
+{
+ "source": "https://zenodo.org/records/15995036/files/ai4mars-dataset-merged-0.6.zip?download=1",
+ "n_entries": 146179,
+ "total_uncompressed_gb": 16.46,
+ "folders": {
+  "ai4mars-dataset-merged-0.6": {
+   "files": 4,
+   "bytes": 8446,
+   "examples": [
+    "changelog.md",
+    "info.md",
+    "label_keys.json"
+   ]
+  },
+  "ai4mars-dataset-merged-0.6/m2020/images": {
+   "files": 1,
+   "bytes": 316,
+   "examples": [
+    "DATA_NOTES.txt"
+   ]
+  },
+  "ai4mars-dataset-merged-0.6/m2020/images/HAFIQ": {
+   "files": 2122,
+   "bytes": 283083288,
+   "examples": [
+    "VgncRawLeft_0684693433-41490_rectified.jpeg",
+    "VgncRawLeft_0684693508-32241_rectified.jpeg",
+    "VgncRawLeft_0684693533-49468_rectified.jpeg"
+   ]
+  },
+  "ai4mars-dataset-merged-0.6/m2020/images/mcam": {
+   "files": 11369,
+   "bytes": 2274176273,
+   "examples": [
+    "ZL0_0011_0667930092_064EBY_N0030000ZCAM00015_0340LUJ.jpg",
+    "ZL0_0011_0667930158_064EBY_N0030000ZCAM00015_0340LUJ.jpg",
+    "ZL0_0011_0667930176_064EBY_N0030000ZCAM00015_0340LUJ.jpg"
+   ]
+  },
+  "ai4mars-dataset-merged-0.6/m2020/images/ncam": {
+   "files": 4573,
+   "bytes": 1118633640,
+   "examples": [
+    "NLF_0002_0667130166_842EBY_N0010052AUT_04096_00_0LLJ.jpeg",
+    "NLF_0002_0667130214_804EBY_N0010052AUT_04096_00_0LLJ.jpeg",
+    "NLF_0002_0667130259_241EBY_N0010052AUT_04096_00_0LLJ.jpeg"
+   ]
+  },
+  "ai4mars-dataset-merged-0.6/m2020/labels": {
+   "files": 1,
+   "bytes": 146,
+   "examples": [
+    "NAV_DATA_NOTE.txt"
+   ]
+  },
+  "ai4mars-dataset-merged-0.6/m2020/labels/M2020_GEO/mcam": {
+   "files": 6355,
+   "bytes": 68908699,
+   "examples": [
+    "ZL0_0011_0667930092_064EBY_N0030000ZCAM00015_0340LUJ_merged9.png",
+    "ZL0_0011_0667930298_064EBY_N0030000ZCAM00015_0340LUJ_merged9.png",
+    "ZL0_0011_0667930314_064EBY_N0030000ZCAM00015_0340LUJ_merged7.png"
+   ]
+  },
+  "ai4mars-dataset-merged-0.6/m2020/labels/M2020_GEO/ncam": {
+   "files": 2153,
+   "bytes": 23802005,
+   "examples": [
+    "NLF_0002_0667130166_842EBY_N0010052AUT_04096_00_merged4.png",
+    "NLF_0002_0667130214_804EBY_N0010052AUT_04096_00_merged3.png",
+    "NLF_0002_0667130259_241EBY_N0010052AUT_04096_00_merged5.png"
+   ]
+  },
+  "ai4mars-dataset-merged-0.6/m2020/labels/NAV": {
+   "files": 3827,
+   "bytes": 34749885,
+   "examples": [
+    "NLF_0009_0667755636_926ECM_N0030000NCAM05000_01_295J_merged60.png",
+    "NLF_0009_0667755959_167ECM_N0030000NCAM05000_01_295J_merged60.png",
+    "NLF_0009_0667756282_606ECM_N0030000NCAM05000_01_295J_merged52.png"
+   ]
+  },
+  "ai4mars-dataset-merged-0.6/mer": {
+   "files": 1,
+   "bytes": 57,
+   "examples": [
+    "NOTE.txt"
+   ]
+  },
+  "ai4mars-dataset-merged-0.6/mer/images/eff": {
+   "files": 16300,
+   "bytes": 4536152760,
+   "examples": [
+    "1n128367857eff0200p1512l0m1.JPG",
+    "1n128367913eff0200p1512l0m1.JPG",
+    "1n128367965eff0200p1512l0m1.JPG"
+   ]
+  },
+  "ai4mars-dataset-merged-0.6/mer/images/test": {
+   "files": 204,
+   "bytes": 60151066,
+   "examples": [
+    "1n129697839eff0338p1931l0m1.JPG",
+    "1n129697952eff0338p1932l0m1.JPG",
+    "1n129698004eff0338p1932l0m1.JPG"
+   ]
+  },
+  "ai4mars-dataset-merged-0.6/mer/labels/test/masked-gold-min1-100agree": {
+   "files": 204,
+   "bytes": 1365687,
+   "examples": [
+    "1n129697839eff0338p1931l0m1_16165_T0_merged.png",
+    "1n129697952eff0338p1932l0m1_16165_T0_merged.png",
+    "1n129698004eff0338p1932l0m1_16165_T0_merged.png"
+   ]
+  },
+  "ai4mars-dataset-merged-0.6/mer/labels/test/masked-gold-min2-100agree": {
+   "files": 204,
+   "bytes": 1235440,
+   "examples": [
+    "1n129697839eff0338p1931l0m1_16165_T0_merged.png",
+    "1n129697952eff0338p1932l0m1_16165_T0_merged.png",
+    "1n129698004eff0338p1932l0m1_16165_T0_merged.png"
+   ]
+  },
+  "ai4mars-dataset-merged-0.6/mer/labels/test/masked-gold-min3-100agree": {
+   "files": 205,
+   "bytes": 1046885,
+   "examples": [
+    "1n129697839eff0338p1931l0m1_16165_T0_merged.png",
+    "1n129697952eff0338p1932l0m1_16165_T0_merged.png",
+    "1n129698004eff0338p1932l0m1_16165_T0_merged.png"
+   ]
+  },
+  "ai4mars-dataset-merged-0.6/mer/labels/test/raw_unmerged": {
+   "files": 559,
+   "bytes": 2512114,
+   "examples": [
+    "1n129697839eff0338p1931l0m1_16165_T0_SOL17_2145455.png",
+    "1n129697839eff0338p1931l0m1_16165_T0_SOL17_2145457.png",
+    "1n129697839eff0338p1931l0m1_16165_T0_SOL17_2146379.png"
+   ]
+  },
+  "ai4mars-dataset-merged-0.6/mer/labels/train": {
+   "files": 1,
+   "bytes": 367,
+   "examples": [
+    "NOTE.txt"
+   ]
+  },
+  "ai4mars-dataset-merged-0.6/mer/labels/train/merged-unmasked": {
+   "files": 8507,
+   "bytes": 43537161,
+   "examples": [
+    "1n128367857eff0200p1512l0m1_merged6.png",
+    "1n128367913eff0200p1512l0m1_merged8.png",
+    "1n128367965eff0200p1512l0m1_merged4.png"
+   ]
+  },
+  "ai4mars-dataset-merged-0.6/msl": {
+   "files": 1,
+   "bytes": 189,
+   "examples": [
+    "NOTE.txt"
+   ]
+  },
+  "ai4mars-dataset-merged-0.6/msl/mcam/images": {
+   "files": 9099,
+   "bytes": 1754891139,
+   "examples": [
+    "1150ML0052000010501746E01_XXXX.JPG",
+    "1150ML0052000020501747E01_XXXX.JPG",
+    "1150ML0052000030501748E01_XXXX.JPG"
+   ]
+  },
+  "ai4mars-dataset-merged-0.6/msl/mcam/labels/train": {
+   "files": 9099,
+   "bytes": 49231781,
+   "examples": [
+    "1150ML0052000010501746E01_XXXX_15033_merged.png",
+    "1150ML0052000020501747E01_XXXX_15033_merged.png",
+    "1150ML0052000030501748E01_XXXX_15033_merged.png"
+   ]
+  },
+  "ai4mars-dataset-merged-0.6/msl/ncam/images/edr": {
+   "files": 18127,
+   "bytes": 6010571270,
+   "examples": [
+    "NLA_397586928EDR_F0010008AUT_04096M1.JPG",
+    "NLA_397586934EDR_F0010008AUT_04096M1.JPG",
+    "NLA_397681339EDR_F0020000AUT_04096M1.JPG"
+   ]
+  },
+  "ai4mars-dataset-merged-0.6/msl/ncam/images/mxy": {
+   "files": 18097,
+   "bytes": 59405902,
+   "examples": [
+    "NLA_397586928MXY_F0010008AUT_04096M1.png",
+    "NLA_397586934MXY_F0010008AUT_04096M1.png",
+    "NLA_397681339MXY_F0020000AUT_04096M1.png"
+   ]
+  },
+  "ai4mars-dataset-merged-0.6/msl/ncam/images/rng-30m": {
+   "files": 18096,
+   "bytes": 23796818,
+   "examples": [
+    "NLA_397586928RNG_F0010008AUT_04096M1.png",
+    "NLA_397586934RNG_F0010008AUT_04096M1.png",
+    "NLA_397681339RNG_F0020000AUT_04096M1.png"
+   ]
+  },
+  "ai4mars-dataset-merged-0.6/msl/ncam/labels/test": {
+   "files": 1,
+   "bytes": 213,
+   "examples": [
+    "NOTE.txt"
+   ]
+  },
+  "ai4mars-dataset-merged-0.6/msl/ncam/labels/test/masked-gold-min1-100agree": {
+   "files": 322,
+   "bytes": 2631024,
+   "examples": [
+    "NLA_409036068EDR_F0051606NCAM00348M1_merged.png",
+    "NLA_409036116EDR_F0051606NCAM00348M1_merged.png",
+    "NLA_409036860EDR_F0051662NCAM00346M1_merged.png"
+   ]
+  },
+  "ai4mars-dataset-merged-0.6/msl/ncam/labels/test/masked-gold-min2-100agree": {
+   "files": 322,
+   "bytes": 2469806,
+   "examples": [
+    "NLA_409036068EDR_F0051606NCAM00348M1_merged.png",
+    "NLA_409036116EDR_F0051606NCAM00348M1_merged.png",
+    "NLA_409036860EDR_F0051662NCAM00346M1_merged.png"
+   ]
+  },
+  "ai4mars-dataset-merged-0.6/msl/ncam/labels/test/masked-gold-min3-100agree": {
+   "files": 322,
+   "bytes": 2190473,
+   "examples": [
+    "NLA_409036068EDR_F0051606NCAM00348M1_merged.png",
+    "NLA_409036116EDR_F0051606NCAM00348M1_merged.png",
+    "NLA_409036860EDR_F0051662NCAM00346M1_merged.png"
+   ]
+  },
+  "ai4mars-dataset-merged-0.6/msl/ncam/labels/train": {
+   "files": 16064,
+   "bytes": 102697979,
+   "examples": [
+    "NLA_397586934EDR_F0010008AUT_04096M1.png",
+    "NLA_397681339EDR_F0020000AUT_04096M1.png",
+    "NLA_397681372EDR_F0020000AUT_04096M1.png"
+   ]
+  }
+ }
+}
