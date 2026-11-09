@@ -78,6 +78,7 @@ def normalize_rows(rows: list[dict]) -> list[dict]:
     if not rows:
         return rows
     wanted = {_norm(c): c for c in KEEP + list(FILTERS) + ["total_units"]}
+    wanted[_norm("loan_to_value_ratio")] = "combined_loan_to_value_ratio"  # Data Browser's name for CLTV
     mapping = {h: wanted.get(_norm(h), h) for h in rows[0]}
     return [{mapping[k]: v for k, v in r.items()} for r in rows]
 
