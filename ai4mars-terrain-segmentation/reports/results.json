@@ -1,0 +1,530 @@
+{
+  "case": "ai4mars-terrain-segmentation",
+  "version": "1.0.0",
+  "generated_utc": "2026-11-09T10:41:59+00:00",
+  "environment": {
+    "python": "3.13.18",
+    "torch": "2.15.0+cpu",
+    "torchvision": "0.29.2+cpu",
+    "pretrained_backbone": true
+  },
+  "config": {
+    "seed": 0,
+    "image_size": 256,
+    "batch_size": 16,
+    "samples_per_epoch": 4000,
+    "max_epochs": 8,
+    "patience": 2,
+    "lr": {
+      "unet": 0.001,
+      "lraspp_mobilenet_v3": 0.001
+    },
+    "time_budget_min": 80.0,
+    "val_fraction": 0.1,
+    "val_limit": 800,
+    "n_bootstrap": 1000,
+    "limit_train": null,
+    "workers": 4
+  },
+  "data": {
+    "n_train": 14385,
+    "n_validation": 1679,
+    "n_validation_scored": 800,
+    "n_test": 322,
+    "train_positions": 1351,
+    "validation_positions": 150,
+    "test_images_at_unseen_positions": 151,
+    "train_pixel_share": {
+      "soil": 0.378184801366092,
+      "bedrock": 0.49694489945337966,
+      "sand": 0.11596559491349272,
+      "big rock": 0.008904704267035643
+    },
+    "class_weights": {
+      "soil": 0.3923431634902954,
+      "bedrock": 0.3422662019729614,
+      "sand": 0.7085223197937012,
+      "big rock": 2.556868314743042
+    }
+  },
+  "validation_miou": {
+    "majority": 0.1252864135467202,
+    "unet": 0.5920692493760422,
+    "lraspp_mobilenet_v3": 0.7510330016021913
+  },
+  "histories": {
+    "unet": [
+      {
+        "epoch": 1,
+        "train_loss": 0.882300943851471,
+        "val_miou": 0.424718183920237,
+        "seconds": 674.4
+      },
+      {
+        "epoch": 2,
+        "train_loss": 0.6365127015113831,
+        "val_miou": 0.5285579430510734,
+        "seconds": 681.9
+      },
+      {
+        "epoch": 3,
+        "train_loss": 0.5578130927085877,
+        "val_miou": 0.5213959135287316,
+        "seconds": 679.2
+      },
+      {
+        "epoch": 4,
+        "train_loss": 0.48724360913038256,
+        "val_miou": 0.5588437572084105,
+        "seconds": 679.8
+      },
+      {
+        "epoch": 5,
+        "train_loss": 0.4579111760854721,
+        "val_miou": 0.5920692493760422,
+        "seconds": 679.5
+      },
+      {
+        "epoch": 6,
+        "train_loss": 0.43189385044574735,
+        "val_miou": 0.4391284039506303,
+        "seconds": 683.5
+      },
+      {
+        "epoch": 7,
+        "train_loss": 0.4205549944639206,
+        "val_miou": 0.5691891337345865,
+        "seconds": 688.8
+      }
+    ],
+    "lraspp_mobilenet_v3": [
+      {
+        "epoch": 1,
+        "train_loss": 0.37026199588179587,
+        "val_miou": 0.6689019941675669,
+        "seconds": 264.1
+      },
+      {
+        "epoch": 2,
+        "train_loss": 0.2673428544402123,
+        "val_miou": 0.7283194810614658,
+        "seconds": 264.7
+      },
+      {
+        "epoch": 3,
+        "train_loss": 0.23459235678613186,
+        "val_miou": 0.7510330016021913,
+        "seconds": 262.5
+      },
+      {
+        "epoch": 4,
+        "train_loss": 0.19089134258031845,
+        "val_miou": 0.6617726803754,
+        "seconds": 262.3
+      },
+      {
+        "epoch": 5,
+        "train_loss": 0.18836601321399213,
+        "val_miou": 0.6851871317833621,
+        "seconds": 262.9
+      }
+    ]
+  },
+  "selected": {
+    "model": "lraspp_mobilenet_v3",
+    "majority_class": "bedrock"
+  },
+  "test": {
+    "min1": {
+      "majority": {
+        "miou": 0.07723317886016288,
+        "pixel_accuracy": 0.30893271544065154,
+        "iou": {
+          "soil": 0.0,
+          "bedrock": 0.30893271544065154,
+          "sand": 0.0,
+          "big rock": 0.0
+        },
+        "recall": {
+          "soil": 0.0,
+          "bedrock": 1.0,
+          "sand": 0.0,
+          "big rock": 0.0
+        },
+        "pixels": {
+          "soil": 89096149,
+          "bedrock": 60015953,
+          "sand": 44774352,
+          "big rock": 382233
+        }
+      },
+      "unet": {
+        "miou": 0.5266809493377654,
+        "pixel_accuracy": 0.803583286687885,
+        "iou": {
+          "soil": 0.6900079127351489,
+          "bedrock": 0.688791489129239,
+          "sand": 0.6475978463467502,
+          "big rock": 0.08032654913992371
+        },
+        "recall": {
+          "soil": 0.7007014298676366,
+          "bedrock": 0.9193408292625129,
+          "sand": 0.855119779287928,
+          "big rock": 0.572219039172442
+        },
+        "pixels": {
+          "soil": 89096149,
+          "bedrock": 60015953,
+          "sand": 44774352,
+          "big rock": 382233
+        }
+      },
+      "lraspp_mobilenet_v3": {
+        "miou": 0.6225794565037728,
+        "pixel_accuracy": 0.8928921211064756,
+        "iou": {
+          "soil": 0.8663332854846815,
+          "bedrock": 0.7537862233970214,
+          "sand": 0.8099329590871694,
+          "big rock": 0.06026535804621858
+        },
+        "recall": {
+          "soil": 0.9536215757204052,
+          "bedrock": 0.8375510091458516,
+          "sand": 0.8493181766204009,
+          "big rock": 0.530767882417269
+        },
+        "pixels": {
+          "soil": 89096149,
+          "bedrock": 60015953,
+          "sand": 44774352,
+          "big rock": 382233
+        }
+      }
+    },
+    "min2": {
+      "majority": {
+        "miou": 0.0684123663217081,
+        "pixel_accuracy": 0.2736494652868324,
+        "iou": {
+          "soil": 0.0,
+          "bedrock": 0.2736494652868324,
+          "sand": 0.0,
+          "big rock": 0.0
+        },
+        "recall": {
+          "soil": 0.0,
+          "bedrock": 1.0,
+          "sand": 0.0,
+          "big rock": 0.0
+        },
+        "pixels": {
+          "soil": 80244892,
+          "bedrock": 44722418,
+          "sand": 38332616,
+          "big rock": 129657
+        }
+      },
+      "unet": {
+        "miou": 0.5640802362270849,
+        "pixel_accuracy": 0.8416848252008329,
+        "iou": {
+          "soil": 0.7398450802665375,
+          "bedrock": 0.7409399331073289,
+          "sand": 0.7106791467404656,
+          "big rock": 0.06485678479400754
+        },
+        "recall": {
+          "soil": 0.7468880885278031,
+          "bedrock": 0.9393554704488474,
+          "sand": 0.9262597157470286,
+          "big rock": 0.8178501739204208
+        },
+        "pixels": {
+          "soil": 80244892,
+          "bedrock": 44722418,
+          "sand": 38332616,
+          "big rock": 129657
+        }
+      },
+      "lraspp_mobilenet_v3": {
+        "miou": 0.6662867610262695,
+        "pixel_accuracy": 0.9316516276003715,
+        "iou": {
+          "soil": 0.9145342584665672,
+          "bedrock": 0.8234573922430813,
+          "sand": 0.8811528005656011,
+          "big rock": 0.046002592829828284
+        },
+        "recall": {
+          "soil": 0.978337038574368,
+          "bedrock": 0.8658960032080555,
+          "sand": 0.911285939889936,
+          "big rock": 0.7400294623506637
+        },
+        "pixels": {
+          "soil": 80244892,
+          "bedrock": 44722418,
+          "sand": 38332616,
+          "big rock": 129657
+        }
+      }
+    },
+    "min3": {
+      "majority": {
+        "miou": 0.05597759723170785,
+        "pixel_accuracy": 0.2239103889268314,
+        "iou": {
+          "soil": 0.0,
+          "bedrock": 0.2239103889268314,
+          "sand": 0.0,
+          "big rock": 0.0
+        },
+        "recall": {
+          "soil": 0.0,
+          "bedrock": 1.0,
+          "sand": 0.0,
+          "big rock": 0.0
+        },
+        "pixels": {
+          "soil": 60069019,
+          "bedrock": 26192939,
+          "sand": 30639905,
+          "big rock": 77698
+        }
+      },
+      "unet": {
+        "miou": 0.6214624463966398,
+        "pixel_accuracy": 0.875790216036116,
+        "iou": {
+          "soil": 0.7911687511437792,
+          "bedrock": 0.7955670681887059,
+          "sand": 0.7549616543773743,
+          "big rock": 0.1441523118766999
+        },
+        "recall": {
+          "soil": 0.7959972510954441,
+          "bedrock": 0.9719591222657373,
+          "sand": 0.9497468742151779,
+          "big rock": 0.980218281036835
+        },
+        "pixels": {
+          "soil": 60069019,
+          "bedrock": 26192939,
+          "sand": 30639905,
+          "big rock": 77698
+        }
+      },
+      "lraspp_mobilenet_v3": {
+        "miou": 0.7222810210284606,
+        "pixel_accuracy": 0.9632686004010564,
+        "iou": {
+          "soil": 0.9498161274923042,
+          "bedrock": 0.9078745979924707,
+          "sand": 0.9242606952206616,
+          "big rock": 0.10717266340840607
+        },
+        "recall": {
+          "soil": 0.9846576818575978,
+          "bedrock": 0.9341062490161948,
+          "sand": 0.9463192526217036,
+          "big rock": 0.9420705809673351
+        },
+        "pixels": {
+          "soil": 60069019,
+          "bedrock": 26192939,
+          "sand": 30639905,
+          "big rock": 77698
+        }
+      }
+    }
+  },
+  "test_intervals_primary": {
+    "miou_ci95": {
+      "majority": [
+        0.058107819629359375,
+        0.07963000017951334
+      ],
+      "unet": [
+        0.531993722088654,
+        0.6048614463779064
+      ],
+      "lraspp_mobilenet_v3": [
+        0.6432447118687413,
+        0.6920222136577004
+      ]
+    },
+    "miou_difference_vs": {
+      "majority": {
+        "mean": 0.5980267136535188,
+        "ci95": [
+          0.5712010154364634,
+          0.6275359232175042
+        ]
+      },
+      "unet": {
+        "mean": 0.10183847499980764,
+        "ci95": [
+          0.07293670092193051,
+          0.1307661023068123
+        ]
+      }
+    }
+  },
+  "test_unseen_positions_primary": {
+    "majority": {
+      "miou": 0.06090435593648184,
+      "pixel_accuracy": 0.24361742374592735,
+      "iou": {
+        "soil": 0.0,
+        "bedrock": 0.24361742374592735,
+        "sand": 0.0,
+        "big rock": 0.0
+      },
+      "recall": {
+        "soil": 0.0,
+        "bedrock": 1.0,
+        "sand": 0.0,
+        "big rock": 0.0
+      },
+      "pixels": {
+        "soil": 53051754,
+        "bedrock": 19320234,
+        "sand": 6889379,
+        "big rock": 44266
+      }
+    },
+    "unet": {
+      "miou": 0.5063030873429569,
+      "pixel_accuracy": 0.8378770269698245,
+      "iou": {
+        "soil": 0.7930221517442813,
+        "bedrock": 0.7264600847343904,
+        "sand": 0.4576449251681659,
+        "big rock": 0.04808518772498994
+      },
+      "recall": {
+        "soil": 0.7978295307634881,
+        "bedrock": 0.9339101689969179,
+        "sand": 0.8771149039702998,
+        "big rock": 0.8126327203722947
+      },
+      "pixels": {
+        "soil": 53051754,
+        "bedrock": 19320234,
+        "sand": 6889379,
+        "big rock": 44266
+      }
+    },
+    "lraspp_mobilenet_v3": {
+      "miou": 0.6497637678469734,
+      "pixel_accuracy": 0.9470820061419849,
+      "iou": {
+        "soil": 0.9525286096388614,
+        "bedrock": 0.8320211245987762,
+        "sand": 0.7797958773067518,
+        "big rock": 0.03470945984350429
+      },
+      "recall": {
+        "soil": 0.9857593398325718,
+        "bedrock": 0.8751168852302721,
+        "sand": 0.8534245249100101,
+        "big rock": 0.5794063163601861
+      },
+      "pixels": {
+        "soil": 53051754,
+        "bedrock": 19320234,
+        "sand": 6889379,
+        "big rock": 44266
+      }
+    }
+  },
+  "confusion_primary": {
+    "majority": [
+      [
+        0,
+        80244892,
+        0,
+        0
+      ],
+      [
+        0,
+        44722418,
+        0,
+        0
+      ],
+      [
+        0,
+        38332616,
+        0,
+        0
+      ],
+      [
+        0,
+        129657,
+        0,
+        0
+      ]
+    ],
+    "unet": [
+      [
+        59933954,
+        9527046,
+        10751653,
+        32239
+      ],
+      [
+        441881,
+        42010248,
+        870447,
+        1399842
+      ],
+      [
+        317742,
+        2435667,
+        35505958,
+        73249
+      ],
+      [
+        4274,
+        13457,
+        5886,
+        106040
+      ]
+    ],
+    "lraspp_mobilenet_v3": [
+      [
+        78506550,
+        927811,
+        806149,
+        4382
+      ],
+      [
+        3682112,
+        38724963,
+        503962,
+        1811381
+      ],
+      [
+        1895013,
+        1365297,
+        34931974,
+        140332
+      ],
+      [
+        21186,
+        11756,
+        765,
+        95950
+      ]
+    ]
+  },
+  "figures": {
+    "examples": "reports/figures/examples.png",
+    "per_class_iou": "reports/figures/per_class_iou.png",
+    "confusion_matrix": "reports/figures/confusion_matrix.png",
+    "miou_by_agreement": "reports/figures/miou_by_agreement.png",
+    "training_curves": "reports/figures/training_curves.png"
+  }
+}
