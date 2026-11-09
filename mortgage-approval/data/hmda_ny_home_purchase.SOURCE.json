@@ -1,0 +1,74 @@
+{
+  "dataset": "HMDA public loan/application register",
+  "publisher": "Consumer Financial Protection Bureau / FFIEC",
+  "data_gov": "https://catalog.data.gov/dataset/hmda-public-data-starting-in-2017",
+  "api": "https://ffiec.cfpb.gov/v2/data-browser-api/view/csv",
+  "query": {
+    "states": "NY",
+    "actions_taken": "1,2,3",
+    "loan_purposes": "1"
+  },
+  "post_filters": {
+    "lien_status": "1",
+    "occupancy_type": "1",
+    "business_or_commercial_purpose": "2",
+    "reverse_mortgage": "2",
+    "open_end_line_of_credit": "2",
+    "total_units": [
+      "1",
+      "2",
+      "3",
+      "4"
+    ]
+  },
+  "years": {
+    "train": 2023,
+    "test": 2024
+  },
+  "sample": {
+    "train": 80000,
+    "test": 40000
+  },
+  "seed": 2023,
+  "retrieved_utc": "2026-11-09T04:56:30+00:00",
+  "downloads": {
+    "train": {
+      "url": "https://files.ffiec.cfpb.gov/data-browser/datasets/2023/filtered-queries/one-year/9e2b657b3c43da03c4f415123e761cc3.csv",
+      "bytes": 53519346,
+      "sha256": "dcd0ac7cfbf171062d8933dddbdd8bef291df6d923f2c3edb952b877f49b8747",
+      "rows": 138746
+    },
+    "test": {
+      "url": "https://files.ffiec.cfpb.gov/data-browser/datasets/2024/filtered-queries/one-year/9e2b657b3c43da03c4f415123e761cc3.csv",
+      "bytes": 53381661,
+      "sha256": "e08d7afed898ea6b16da6a6e282be01725915117e76d5e35ceb14540caad4d22",
+      "rows": 139144
+    }
+  },
+  "counts": {
+    "train": {
+      "downloaded": 138746,
+      "dropped_filters": 25807,
+      "eligible": 112939,
+      "action_taken": {
+        "1": 95234,
+        "2": 4316,
+        "3": 13389
+      },
+      "sampled": 80000
+    },
+    "test": {
+      "downloaded": 139144,
+      "dropped_filters": 28637,
+      "eligible": 110507,
+      "action_taken": {
+        "1": 93524,
+        "3": 13143,
+        "2": 3840
+      },
+      "sampled": 40000
+    }
+  },
+  "rows": 120000,
+  "snapshot_sha256": "d5b5cac99648cd1f82c0f185e5e29205d9e91b05b248f8cb72dee71e2972fe13"
+}
