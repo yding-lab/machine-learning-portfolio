@@ -68,13 +68,27 @@ FILTERS = {"lien_status": "1", "occupancy_type": "1", "business_or_commercial_pu
 UNITS = {"1", "2", "3", "4"}
 
 
+def _norm(name: str) -> str:
+    return "".join(ch for ch in name.lower() if ch.isalnum())
+
+
+def normalize_rows(rows: list[dict]) -> list[dict]:
+    """The API header mixes hyphens and underscores (e.g. 'open-end_line_of_credit',
+    'derived_msa-md'); map every column to its underscore name used here."""
+    if not rows:
+        return rows
+    wanted = {_norm(c): c for c in KEEP + list(FILTERS) + ["total_units"]}
+    mapping = {h: wanted.get(_norm(h), h) for h in rows[0]}
+    return [{mapping[k]: v for k, v in r.items()} for r in rows]
+
+
 def fetch(year: int) -> tuple[list[dict], str, dict]:
     params = {**QUERY, "years": str(year)}
     r = requests.get(API, params=params, timeout=600, headers={"User-Agent": "hmda-portfolio-snapshot"})
     if r.status_code != 200:
         raise SystemExit(f"{r.status_code} for {r.url}: {r.text[:500]}")
     sha = hashlib.sha256(r.content).hexdigest()
-    rows = list(csv.DictReader(io.StringIO(r.content.decode("utf-8"))))
+    rows = normalize_rows(list(csv.DictReader(io.StringIO(r.content.decode("utf-8")))))
     return rows, sha, {"url": r.url, "bytes": len(r.content)}
 
 
@@ -87,7 +101,7 @@ def main() -> int:
         downloads[split] = {**meta, "sha256": sha, "rows": len(rows)}
         missing = [c for c in KEEP + list(FILTERS) if rows and c not in rows[0]]
         if missing:
-            raise SystemExit(f"{year}: columns not found {missing}; header: {list(rows[0])[:20]}...")
+            raise SystemExit(f"{year}: columns not found {missing}; header: {list(rows[0])}")
         c = Counter()
         kept = []
         for row in rows:
