@@ -9,9 +9,9 @@ HMDA Data Browser API (https://ffiec.cfpb.gov/documentation/api/data-browser/).
 Snapshot definition (fixed):
   - New York State, applications with a credit decision: originated (1), approved but not
     accepted (2), denied (3). Withdrawn, incomplete, purchased and pre-approval records are out.
-  - home purchase (loan_purpose 1), first lien, 1-4 units; kept after download only if
+  - home purchase (loan_purpose 1); kept after download only if first lien, 1-4 units,
     owner-occupied principal residence, not business/commercial, not reverse mortgage,
-    not an open-end line of credit
+    not an open-end line of credit (the API takes at most two data filters)
   - train/validation = applications acted on in 2023, test = 2024 (a time split)
   - seeded random sample of at most TRAIN_N / TEST_N records; full counts recorded
   - kept fields: application characteristics an underwriter would see, census-tract context,
@@ -38,8 +38,9 @@ from pathlib import Path
 import requests
 
 API = "https://ffiec.cfpb.gov/v2/data-browser-api/view/csv"
-QUERY = {"states": "NY", "actions_taken": "1,2,3", "loan_purposes": "1", "lien_statuses": "1",
-         "total_units": "1,2,3,4"}
+# The Data Browser API accepts at most two data filters per query, so lien status and units
+# are applied after download (POST_FILTERS) together with the fields the API can't filter on.
+QUERY = {"states": "NY", "actions_taken": "1,2,3", "loan_purposes": "1"}
 YEARS = {"train": 2023, "test": 2024}
 SAMPLE = {"train": 80000, "test": 40000}
 SEED = 2023
@@ -62,14 +63,16 @@ KEEP = [
     # demographics: fairness audit only, never model inputs
     "derived_race", "derived_ethnicity", "derived_sex", "applicant_age",
 ]
-FILTERS = {"occupancy_type": "1", "business_or_commercial_purpose": "2", "reverse_mortgage": "2",
-           "open_end_line_of_credit": "2"}
+FILTERS = {"lien_status": "1", "occupancy_type": "1", "business_or_commercial_purpose": "2",
+           "reverse_mortgage": "2", "open_end_line_of_credit": "2"}
+UNITS = {"1", "2", "3", "4"}
 
 
 def fetch(year: int) -> tuple[list[dict], str, dict]:
     params = {**QUERY, "years": str(year)}
     r = requests.get(API, params=params, timeout=600, headers={"User-Agent": "hmda-portfolio-snapshot"})
-    r.raise_for_status()
+    if r.status_code != 200:
+        raise SystemExit(f"{r.status_code} for {r.url}: {r.text[:500]}")
     sha = hashlib.sha256(r.content).hexdigest()
     rows = list(csv.DictReader(io.StringIO(r.content.decode("utf-8"))))
     return rows, sha, {"url": r.url, "bytes": len(r.content)}
@@ -89,7 +92,7 @@ def main() -> int:
         kept = []
         for row in rows:
             c["downloaded"] += 1
-            if any(row[k] != v for k, v in FILTERS.items()):
+            if any(row[k] != v for k, v in FILTERS.items()) or row["total_units"] not in UNITS:
                 c["dropped_filters"] += 1
                 continue
             kept.append({k: row[k] for k in KEEP} | {"split": split})
@@ -113,7 +116,7 @@ def main() -> int:
         "dataset": "HMDA public loan/application register",
         "publisher": "Consumer Financial Protection Bureau / FFIEC",
         "data_gov": "https://catalog.data.gov/dataset/hmda-public-data-starting-in-2017",
-        "api": API, "query": QUERY, "post_filters": FILTERS, "years": YEARS, "sample": SAMPLE, "seed": SEED,
+        "api": API, "query": QUERY, "post_filters": {**FILTERS, "total_units": sorted(UNITS)}, "years": YEARS, "sample": SAMPLE, "seed": SEED,
         "retrieved_utc": retrieved, "downloads": downloads, "counts": counts, "rows": len(out),
         "snapshot_sha256": hashlib.sha256(OUT.read_bytes()).hexdigest(),
     }, indent=2) + "\n")
