@@ -10,6 +10,10 @@ def _ci(v):
     return f"{v[0]:.3f} – {v[1]:.3f}"
 
 
+def _at(v: dict, key: str) -> str:
+    return "—" if not v.get("at_threshold") else "%.3f" % v["at_threshold"][key]
+
+
 def markdown(r: dict) -> str:
     d, sel = r["data"], r["selected"]
     m = sel["model"]
@@ -45,8 +49,7 @@ def markdown(r: dict) -> str:
         "| Model | Average precision | ROC-AUC | Brier | Recall at its threshold | Precision at its threshold |",
         "|---|---|---|---|---|---|",
         *[f"| {NAMES[k]} | {v['average_precision']:.3f} | {v['roc_auc']:.3f} | {v['brier']:.4f} | "
-          f"{(f'{v['at_threshold']['recall']:.3f}' if v['at_threshold'] else '—')} | "
-          f"{(f'{v['at_threshold']['precision']:.3f}' if v['at_threshold'] else '—')} |" for k, v in r["test"].items()],
+          f"{_at(v, 'recall')} | {_at(v, 'precision')} |" for k, v in r["test"].items()],
         "",
         f"Selected model, 95% bootstrap intervals ({r['config']['n_bootstrap']} resamples of test applications): "
         f"AP {_ci(ci['average_precision'])}, ROC-AUC {_ci(ci['roc_auc'])}, recall {_ci(ci['recall'])}, precision {_ci(ci['precision'])}.",
