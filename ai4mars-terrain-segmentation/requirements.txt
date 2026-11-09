@@ -1,0 +1,6 @@
+numpy>=2.0
+torch>=2.4
+torchvision>=0.19
+pillow>=10
+matplotlib>=3.8,<4
+requests>=2.31  # scripts/fetch_data.py

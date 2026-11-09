@@ -1,0 +1,46 @@
+name: train (ai4mars-terrain-segmentation)
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  train:
+    runs-on: ubuntu-latest
+    timeout-minutes: 340
+    defaults:
+      run:
+        working-directory: ai4mars-terrain-segmentation
+    env:
+      AI4MARS_RAW_DIR: /mnt/ai4mars/raw
+      AI4MARS_CACHE_DIR: /mnt/ai4mars/cache
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.13"
+      - name: Install (CPU-only PyTorch)
+        run: |
+          pip install torch torchvision --index-url https://download.pytorch.org/whl/cpu
+          pip install -r requirements.txt
+      - name: Use the large /mnt disk (16 GB download)
+        run: sudo mkdir -p /mnt/ai4mars && sudo chown "$USER" /mnt/ai4mars && df -h /mnt | tail -1
+      - name: Download, train, evaluate
+        run: |
+          set -o pipefail
+          { python scripts/fetch_data.py && python -m terrain_seg.train; } 2>&1 | tee run.log || {
+            msg=$(tail -c 3000 run.log | sed ':a;N;$!ba;s/%/%25/g;s/\r/%0D/g;s/\n/%0A/g')
+            echo "::error title=failed::$msg"; exit 1; }
+          msg=$(tail -c 3000 run.log | sed ':a;N;$!ba;s/%/%25/g;s/\r/%0D/g;s/\n/%0A/g')
+          echo "::notice title=train::$msg"
+      - name: Commit results (reports only, no images or weights)
+        run: |
+          git config user.name "yding-lab"
+          git config user.email "235223309+yding-lab@users.noreply.github.com"
+          git add reports
+          git diff --cached --quiet && exit 0
+          git commit -m "ai4mars-terrain-segmentation: training results"
+          git pull --rebase origin "${{ github.ref_name }}"
+          git push origin "HEAD:${{ github.ref_name }}"
