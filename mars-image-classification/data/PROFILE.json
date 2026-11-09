@@ -1,0 +1,189 @@
+{
+  "classes": {
+    "0": "apxs",
+    "1": "apxs cal target",
+    "2": "chemcam cal target",
+    "3": "chemin inlet open",
+    "4": "drill",
+    "5": "drill holes",
+    "6": "drt front",
+    "7": "drt side",
+    "8": "ground",
+    "9": "horizon",
+    "10": "inlet",
+    "11": "mahli",
+    "12": "mahli cal target",
+    "13": "mastcam",
+    "14": "mastcam cal target",
+    "15": "observation tray",
+    "16": "portion box",
+    "17": "portion tube",
+    "18": "portion tube opening",
+    "19": "rems uv sensor",
+    "20": "rover rear deck",
+    "21": "scoop",
+    "22": "sun",
+    "23": "turret",
+    "24": "wheel"
+  },
+  "splits": {
+    "train": {
+      "n": 3746,
+      "missing_files": 0,
+      "per_class": {
+        "apxs": 30,
+        "apxs cal target": 6,
+        "chemcam cal target": 15,
+        "chemin inlet open": 47,
+        "drill": 19,
+        "drill holes": 36,
+        "drt front": 4,
+        "drt side": 8,
+        "ground": 2343,
+        "horizon": 224,
+        "inlet": 165,
+        "mahli": 14,
+        "mahli cal target": 32,
+        "mastcam": 36,
+        "mastcam cal target": 101,
+        "observation tray": 85,
+        "portion box": 18,
+        "portion tube": 73,
+        "portion tube opening": 8,
+        "rems uv sensor": 12,
+        "rover rear deck": 57,
+        "scoop": 166,
+        "turret": 178,
+        "wheel": 69
+      },
+      "image_sizes_top": {
+        "255x255": 735,
+        "256x256": 626,
+        "256x193": 368,
+        "255x192": 350,
+        "255x191": 283
+      },
+      "modes": {
+        "RGB": 3604,
+        "L": 142
+      },
+      "instrument_codes": {
+        "MR": 1935,
+        "ML": 1491,
+        "MH": 320
+      },
+      "sol_range": [
+        3,
+        180
+      ],
+      "example_paths": [
+        "calibrated/0077ML0005780000102730I01_DRCL.JPG",
+        "calibrated/0072MR0005610170103642E01_DRCL.JPG",
+        "calibrated/0069MR0004130000103477I01_DRCL.JPG"
+      ]
+    },
+    "val": {
+      "n": 1640,
+      "missing_files": 0,
+      "per_class": {
+        "apxs": 16,
+        "apxs cal target": 4,
+        "chemin inlet open": 45,
+        "drill": 20,
+        "drill holes": 470,
+        "drt front": 2,
+        "drt side": 4,
+        "ground": 87,
+        "horizon": 75,
+        "inlet": 96,
+        "mahli cal target": 28,
+        "mastcam cal target": 4,
+        "observation tray": 14,
+        "portion box": 20,
+        "portion tube": 55,
+        "portion tube opening": 12,
+        "rems uv sensor": 20,
+        "scoop": 24,
+        "turret": 15,
+        "wheel": 629
+      },
+      "image_sizes_top": {
+        "256x192": 757,
+        "255x188": 375,
+        "256x191": 184,
+        "256x256": 140,
+        "255x191": 89
+      },
+      "modes": {
+        "RGB": 1640
+      },
+      "instrument_codes": {
+        "MH": 1357,
+        "ML": 189,
+        "MR": 94
+      },
+      "sol_range": [
+        182,
+        564
+      ],
+      "example_paths": [
+        "calibrated/0292MH0002810020103587C00_DRCL.JPG",
+        "calibrated/0270MH0002530050102760I01_DRCL.JPG",
+        "calibrated/0549MH0002620000201566E01_DRCL.JPG"
+      ]
+    },
+    "test": {
+      "n": 1305,
+      "missing_files": 0,
+      "per_class": {
+        "apxs": 34,
+        "apxs cal target": 14,
+        "chemcam cal target": 21,
+        "chemin inlet open": 84,
+        "drill": 20,
+        "drt front": 60,
+        "drt side": 150,
+        "ground": 254,
+        "horizon": 72,
+        "inlet": 16,
+        "mahli": 12,
+        "mahli cal target": 57,
+        "mastcam": 32,
+        "mastcam cal target": 48,
+        "observation tray": 12,
+        "portion box": 48,
+        "portion tube": 9,
+        "portion tube opening": 2,
+        "rems uv sensor": 36,
+        "rover rear deck": 14,
+        "scoop": 10,
+        "wheel": 300
+      },
+      "image_sizes_top": {
+        "256x192": 443,
+        "256x256": 221,
+        "255x188": 147,
+        "255x255": 107,
+        "256x209": 69
+      },
+      "modes": {
+        "RGB": 1275,
+        "L": 30
+      },
+      "instrument_codes": {
+        "MH": 730,
+        "MR": 373,
+        "ML": 202
+      },
+      "sol_range": [
+        565,
+        1060
+      ],
+      "example_paths": [
+        "calibrated/0830MR0036510000500684E01_DRCL.JPG",
+        "calibrated/0640MH0002640000203781I01_DRCL.JPG",
+        "calibrated/0647MH0003250050203806E01_DRCL.JPG"
+      ]
+    }
+  }
+}
