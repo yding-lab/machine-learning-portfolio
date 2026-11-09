@@ -1,0 +1,38 @@
+name: fetch-data (mortgage-approval)
+
+# Rebuilds the committed HMDA snapshot (mortgage-approval/scripts/fetch_hmda.py) and commits it
+# to the branch the workflow ran on. Manual only: the snapshot is meant to stay fixed.
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  snapshot:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: mortgage-approval
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.13"
+      - run: pip install requests
+      - name: Build snapshot
+        run: |
+          set -o pipefail
+          python scripts/fetch_hmda.py 2>&1 | tee fetch.log || {
+            msg=$(tail -c 2500 fetch.log | sed ':a;N;$!ba;s/%/%25/g;s/\r/%0D/g;s/\n/%0A/g')
+            echo "::error title=fetch failed::$msg"; exit 1; }
+          msg=$(tail -c 3000 fetch.log | sed ':a;N;$!ba;s/%/%25/g;s/\r/%0D/g;s/\n/%0A/g')
+          echo "::notice title=snapshot::$msg"
+      - name: Commit snapshot
+        run: |
+          git config user.name "yding-lab"
+          git config user.email "235223309+yding-lab@users.noreply.github.com"
+          git add data/
+          git diff --cached --quiet && { echo "snapshot unchanged"; exit 0; }
+          git commit -m "mortgage-approval: data snapshot from the HMDA Data Browser API"
+          git push origin "HEAD:${{ github.ref_name }}"
