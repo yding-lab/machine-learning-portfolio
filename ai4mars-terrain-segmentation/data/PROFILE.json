@@ -1,0 +1,81 @@
+{
+ "n_images": 18127,
+ "n_train_labels": 16064,
+ "n_test_labels": {
+  "min1": 322,
+  "min2": 322,
+  "min3": 322
+ },
+ "train_labels_with_image": 16064,
+ "test_labels_with_image": 322,
+ "test_also_in_train_labels": 0,
+ "image_size_mode": [
+  [
+   1024,
+   1024
+  ],
+  "L"
+ ],
+ "label_size": [
+  1024,
+  1024
+ ],
+ "train_label_pixel_values_first2000": {
+  "0": 548436107,
+  "1": 498134639,
+  "2": 56530702,
+  "3": 7236480,
+  "255": 986814072
+ },
+ "test_label_pixel_values": {
+  "min1": {
+   "0": 89096149,
+   "1": 60015953,
+   "2": 44774352,
+   "3": 382233,
+   "255": 143372785
+  },
+  "min2": {
+   "0": 80244892,
+   "1": 44722418,
+   "2": 38332616,
+   "3": 129657,
+   "255": 174211889
+  },
+  "min3": {
+   "0": 60069019,
+   "1": 26192939,
+   "2": 30639905,
+   "3": 77698,
+   "255": 220661911
+  }
+ },
+ "mxy_values_first200": {
+  "0": 146840688,
+  "1": 62874512
+ },
+ "rng30_values_first200": {
+  "0": 179966976,
+  "1": 29748224
+ },
+ "sclk_train": [
+  397586934,
+  511216481,
+  626441991
+ ],
+ "sclk_test": [
+  409036068,
+  512555120,
+  613584326
+ ],
+ "test_sclk_within_train_range": 322,
+ "camera_prefix": {
+  "NLB": 14598,
+  "NLA": 1429,
+  "NRA": 10,
+  "NRB": 27
+ },
+ "notes": [
+  "min1, min2, min3 agree refer to the algorithm used to merge test labels. For example, for min2-100agree, semantic labeled pixels are only included if at least 2 out of the 3 expert labelers agreed on those pixels."
+ ]
+}
